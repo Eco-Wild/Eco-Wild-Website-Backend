@@ -1,0 +1,1929 @@
+{
+	"info": {
+		"_postman_id": "a1a74c43-0eb0-4e1f-bb69-d6e1bc51641d",
+		"name": "EM Tourism",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22785003"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@gmail.com\",\r\n    \"password\":\"admin1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth/me",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{refresh_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth/refresh",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"admin1234\",\r\n    \"password\":\"admin12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Phone",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":\"2509876543\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/phone",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Create Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Social Studies",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Artificial Intelligence (AI) is rapidly changing the world. In this blog, we will discuss the trends and predictions for AI in the coming years...",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "https://example.com/images/ai-trends.jpg",
+									"type": "text"
+								},
+								{
+									"key": "publish_date",
+									"value": "2024-11-16T10:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "John Doe",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "AI,Technology,Future,Predictions",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/133762196985824401.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/blogs/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/blogs/?sortBy=title&sortOrder=asc&page=1&limit=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "trends",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2022-11-16T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-11-20T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "title"
+								},
+								{
+									"key": "sortOrder",
+									"value": "asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch One Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/blogs/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "673a21c998dfce20f530161c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/blogs/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "673a21c998dfce20f530161c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/Camera Roll/WIN_20240717_23_34_09_Pro.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/blogs/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6738b3e4ff0b1e9fad197b0e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nate Berg\",\r\n    \"commentText\":\"Great Blog\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/blogs/:id/comments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6738cbecff0b1e9fad197b2b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/blogs/:id/comments/:commentId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								":id",
+								"comments",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6738cbecff0b1e9fad197b2b"
+								},
+								{
+									"key": "commentId",
+									"value": "6738e48ab2663be561800818"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/blogs/count",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookmark Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/blogs/:id/bookmark",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"blogs",
+								":id",
+								"bookmark"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6738b3eeff0b1e9fad197b11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch an Image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/uploads/1731862985574-133762196985824401.jpg",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"uploads",
+								"1731862985574-133762196985824401.jpg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Destination",
+			"item": [
+				{
+					"name": "Create Destination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Explore Madrid",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A breathtaking adventure in the heart of the Alps, offering scenic views and thrilling activities.",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/C:/Users/STUDENT/OneDrive/Pictures/133762196985824401.jpg",
+										"/C:/Users/STUDENT/OneDrive/Pictures/WhatsApp Image 2024-07-16 at 11.30.26_1e9b2c6e.jpg"
+									]
+								},
+								{
+									"key": "publish_date",
+									"value": "2024-11-16T00:00:00.000Z",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Swiss Alps, Switzerland",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "adventure,scenic,mountains",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/destinations/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all Destinations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/destinations/?sortBy=title&sortOrder=asc&page=1&limit=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "trends",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2022-11-16T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-11-20T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "title"
+								},
+								{
+									"key": "sortOrder",
+									"value": "asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch One Destination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/destinations/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744c89233d268183ef44d76"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Destinations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/destinations/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d5812e75efcbf137ecb2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Destinations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/C:/Users/STUDENT/OneDrive/Pictures/133762196985824401.jpg",
+										"/C:/Users/STUDENT/OneDrive/Pictures/WhatsApp Image 2024-07-17 at 23.35.51_65ae9237.jpg"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/destinations/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744c89233d268183ef44d76"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Comment to destinations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nate Berg\",\r\n    \"commentText\":\"Great Blog\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/destinations/:id/comment",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								":id",
+								"comment"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744c89233d268183ef44d76"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Comment from destinations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/destinations/:id/comment/:commentId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								":id",
+								"comment",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744c89233d268183ef44d76"
+								},
+								{
+									"key": "commentId",
+									"value": "6744d3a2922faa0247baca6e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count Destinations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/destinations/count",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookmark Destination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/destinations/:id/bookmark",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"destinations",
+								":id",
+								"bookmark"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744c89233d268183ef44d76"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch an Image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/uploads/1732561042500-133762196985824401.jpg",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"uploads",
+								"1732561042500-133762196985824401.jpg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "Create News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Groundbreaking Genetics Research Unveiled",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Researchers have announced a revolutionary breakthrough in AI technology, paving the way for advancements in multiple fields.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/133762196985824401.jpg"
+								},
+								{
+									"key": "publish_date",
+									"value": "2024-11-16T00:00:00.000Z",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "Jane Doe",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "AI,technology,research",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/news/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all news",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/?sortBy=title&sortOrder=asc&page=1&limit=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "trends",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2022-11-16T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-11-20T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "title"
+								},
+								{
+									"key": "sortOrder",
+									"value": "asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch One News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d73e478997c8db6cf8d2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete news",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d733478997c8db6cf8cd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/133762196985824401.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/news/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d73e478997c8db6cf8d2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/count",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookmark News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/:id/bookmark",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								":id",
+								"bookmark"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d73e478997c8db6cf8d2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Create Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Bitology Conference 2024",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Join industry leaders and innovators for a two-day conference on the latest advancements in technology and innovation.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/WhatsApp Image 2024-07-19 at 20.21.29_d73935de.jpg"
+								},
+								{
+									"key": "publish_date",
+									"value": "2024-12-01T00:00:00.000Z",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "TechWorld Events",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "technology,conference,innovation",
+									"type": "text"
+								},
+								{
+									"key": "bookmark",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/events/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/events/?sortBy=title&sortOrder=asc&page=1&limit=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "trends",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2022-11-16T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-11-20T10:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "title"
+								},
+								{
+									"key": "sortOrder",
+									"value": "asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch One event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/events/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d81c478997c8db6cf8ec"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/events/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d81c478997c8db6cf8ec"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/WhatsApp Image 2024-07-19 at 21.41.52_8a22539a.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/events/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d81c478997c8db6cf8ec"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/events/count",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookmark events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/events/:id/bookmark",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"events",
+								":id",
+								"bookmark"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d804478997c8db6cf8e7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Testimonial",
+			"item": [
+				{
+					"name": "Add Testimonial",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"John Doe\",\r\n    \"comment\":\"This is great\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/testimonials/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"testimonials",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all testimonials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/testimonials/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"testimonials",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete testimonials",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/testimonials/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"testimonials",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d905478997c8db6cf8ff"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update testimonials",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jane Doe\",\r\n    \"comment\":\"This is great\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/testimonials/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"testimonials",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744d907478997c8db6cf902"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Tigers",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "image",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "adventure,scenic,mountains",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Animal",
+									"type": "text"
+								},
+								{
+									"key": "source",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/133762196985824401.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/media/image",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Kigali\",\r\n    \"source\":\"https://www.youtube.com/watch?v=QR4ddlZAY1U\",\r\n    \"tags\":\"adventure,scenic,mountains\",\r\n    \"category\":\"Landscape\",\r\n    \"type\":\"video\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/media/video",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"video"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Image",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Lion",
+									"type": "text"
+								},
+								{
+									"key": "source",
+									"type": "file",
+									"src": "/C:/Users/STUDENT/OneDrive/Pictures/WhatsApp Image 2024-07-19 at 18.46.37_27513a08.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/media/image/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"image",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744dfb6dc0a12f370660d4a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Videos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Musanze\",\r\n    \"source\":\"https://www.youtube.com/watch?v=QR4ddlZAY1U\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/media/video/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"video",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744e2bf9e203fe1f3b3e9b0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/media/image/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"image",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744dfb6dc0a12f370660d4a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Video",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/media/video/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"video",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6744e2bf9e203fe1f3b3e9b0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/media/images",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Video",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/media/videos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"media",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "Send Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"James Potter\",\r\n    \"email\":\"james@gmail.com\",\r\n    \"phone\":\"+25098765432\",\r\n    \"message\":\"This is a test message, daoijpijadfpijaf afjaojfdapjfapoijfadpijfaijfaiujfaifipuajfpajfdpaifdhapiudfjpiaufhdpaiufhpafhapiufhpauifjhpaiufjpiaufpaufpauf \"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contact/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contact",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
