@@ -15,8 +15,7 @@ import { accessAuth } from "../../middleware/auth.js";
 const router = express.Router();
 
 // Create a new destination
-router.post("/", [accessAuth,, upload.fields([
-  { name: "profile_image", maxCount: 1 }, // Single profile image
+router.post("/", [accessAuth, upload.fields([
   { name: "images", maxCount: 10 }, // Array of images
 ])],createDestination);
 
@@ -32,8 +31,7 @@ router.get("/:id", getDestinationWithComments);
 router.delete("/:id",accessAuth, deleteDestination);
 
 // Update a destination by ID
-router.put("/:id",[accessAuth,, upload.fields([
-  { name: "profile_image", maxCount: 1 }, // Single profile image
+router.put("/:id",[accessAuth, upload.fields([
   { name: "images", maxCount: 10 }, // Array of images
 ])], updateDestination);
 

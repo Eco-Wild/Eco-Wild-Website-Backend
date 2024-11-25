@@ -2,6 +2,7 @@ import Destination from "../../models/destination.model.js";
 import Comment from "../../models/comment.model.js";
 import fs from "fs";
 import path from "path";
+import multer from "multer";
 
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
@@ -23,13 +24,11 @@ export const createDestination = async (req, res) => {
   try {
     const { title, description, publish_date, location, tags } = req.body;
 
-    const profileImage = req.files["profile_image"]?.[0]?.filename; // Single image
     const images = req.files["images"]?.map((file) => file.filename); // Array of images
 
     const destination = new Destination({
       title,
       description,
-      profile_image: profileImage || null,
       images: images || [],
       publish_date: publish_date ? new Date(publish_date) : null,
       location,
@@ -50,13 +49,22 @@ export const updateDestination = async (req, res) => {
 
     const { title, description, publish_date, location, tags } = req.body;
 
-    const profileImage = req.files["profile_image"]?.[0]?.filename; // Single image
     const images = req.files["images"]?.map((file) => file.filename); // Array of images
-
+    // If images are updated, delete the old ones
+    if (images) {
+      const destination = await Destination.findById(destinationId);
+      if (destination && destination.images && destination.images.length > 0) {
+      destination.images.forEach((image) => {
+        const imagePath = path.join("./uploads", image);
+        if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+        }
+      });
+      }
+    }
     const updateData = {
       title,
       description,
-      profile_image: profileImage || undefined,
       images: images || undefined,
       publish_date: publish_date ? new Date(publish_date) : undefined,
       location,
