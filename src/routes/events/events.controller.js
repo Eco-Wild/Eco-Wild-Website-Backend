@@ -32,7 +32,7 @@ export const upload = multer({
 export const createEvent = async (req, res) => {
   try {
     const { title, description, date, location, organizer } = req.body;
-    const image = req.file ? req.file.path : null;
+    const image = req.file ? req.file.filename : null;
 
     const event = new Event({
       title,
@@ -67,11 +67,11 @@ export const updateEvent = async (req, res) => {
     if (req.file) {
       // Delete the old image file if it exists
       if (existingEvent.image) {
-        fs.unlink(existingEvent.image, (err) => {
+        fs.unlink(path.join("uploads", existingEvent.image), (err) => {
           if (err) console.error("Error deleting old image:", err);
         });
       }
-      updatedImage = req.file.path;
+      updatedImage = req.file.filename;
     }
 
     // Update the event details
@@ -107,7 +107,7 @@ export const deleteEvent = async (req, res) => {
 
     // Delete the associated image file if it exists
     if (event.image) {
-      fs.unlink(event.image, (err) => {
+      fs.unlink(path.join("uploads", event.image), (err) => {
         if (err) console.error("Error deleting image:", err);
       });
     }
