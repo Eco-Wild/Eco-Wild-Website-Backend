@@ -9,6 +9,7 @@ import testimonial from "./routes/testimonial/testimonial.route.js"
 import event from "./routes/events/events.route.js"
 import news from "./routes/news/news.route.js"
 import media from "./routes/media/media.route.js"
+import contact from "./routes/contact/contact.route.js"
 import path from "path";
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/testimonials", testimonial);
 app.use("/events", event);
 app.use("/news", news);
 app.use("/media",media)
+app.use("/contact",contact)
 // Middleware to serve static files (images)
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 

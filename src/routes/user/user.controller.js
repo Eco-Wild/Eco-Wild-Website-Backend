@@ -5,7 +5,6 @@ import {
 } from "../../models/user.model.js";
 // import _ from "lodash";
 import jwt from "jsonwebtoken";
-import { sendEmail } from "../../helper/mail.js";
 import bcrypt from "bcrypt";
 import Joi from "joi";
 
@@ -105,7 +104,7 @@ async function forgotPassword(req, res){
   });
   //send email with link
   try {
-    const info = await sendEmail({ ...user, forgot: true });
+    // const info = await sendEmail({ ...user, forgot: true });
     console.log("Email sent successfully!", info);
     // Handle success case
   } catch (error) {
