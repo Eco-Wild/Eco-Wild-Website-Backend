@@ -1,0 +1,29 @@
+name: Deploy Eco-Wild-Website-Backend
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}     
+      - name: Build Docker Image
+        run: docker build -t romhas/ecowildhub-backend  .
+      - name: Publish Image to docker hub
+        run: docker push romhas/ecowildhub-backend:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted 
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull romhas/ecowildhub-backend:latest
+      - name: Delete old container
+        run: docker rm -f ecowildhub-backend-container
+      - name: Run Docker Container
+        run: docker run -d -p 3300:3300 --name ecowildhub-backend-container -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' romhas/ecowildhub-backend
