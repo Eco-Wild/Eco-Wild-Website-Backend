@@ -26,4 +26,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f ecowildhub-backend-container
       - name: Run Docker Container
-        run: docker run -d -p 3300:3300 --name ecowildhub-backend-container romhas/ecowildhub-backend
+        run: docker run -d -p 3300:3300 --name ecowildhub-backend-container -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' romhas/ecowildhub-backend
