@@ -5,7 +5,6 @@ const server = http.createServer(app);
 
 async function startServer() {
   await mongocoonnect();
-  console.log(`Server is running on http://localhost:${process.env.PORT}`);
   server.listen(process.env.PORT, () => {
     console.log(`Server is running on http://localhost:${process.env.PORT}`);
   });
